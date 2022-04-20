@@ -80,7 +80,7 @@ app.layout = html.Div(children=[
                     html.H6('Median Home Value (Predicted):'),
                     html.Button(children='Submit', id='submit-val', n_clicks=0,
                                     style={
-                                    'background-color': 'red',
+                                    'background-color': 'blue',
                                     'color': 'white',
                                     'margin-left': '5px',
                                     'verticalAlign': 'center',
