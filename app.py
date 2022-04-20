@@ -3,6 +3,8 @@ from dash import dcc,html
 from dash.dependencies import Input, Output, State
 import pickle
 import numpy as np
+import dash_bootstrap_components as dbc
+
 
 ########### Define your variables ######
 myheading1='California Housing Dataset'
@@ -26,7 +28,8 @@ with open('analysis/model_components/ridge_reg.pkl', 'rb') as f:
     ridge_reg=pickle.load(f)
 
 ########### Initiate the app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets=[dbc.themes.BOOTSTRAP]
+#external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title=tabtitle
