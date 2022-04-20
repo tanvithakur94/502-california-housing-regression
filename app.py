@@ -22,8 +22,8 @@ with open('analysis/model_components/std_scaler.pkl', 'rb') as f:
     std_scaler=pickle.load(f)
 #with open('analysis/model_components/lin_reg.pkl', 'rb') as f:
 #    lin_reg=pickle.load(f)
-with open('analysis/model_components/kneighbor_reg.pkl', 'rb') as f:
-    kneighbor_reg=pickle.load(f)
+with open('analysis/model_components/ridge_reg.pkl', 'rb') as f:
+    ridge_reg=pickle.load(f)
 
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -101,7 +101,7 @@ app.layout = html.Div(children=[
                 ], className='twelve columns'),
 
         html.Div(children=[
-                html.H3('Linear Regression Coefficients (standardized features)'),
+                html.H3('Ridge Regression Coefficients (standardized features)'),
                 dcc.Graph(figure=coefs, id='coefs_fig')
                 ], className='twelve columns'),
 
@@ -146,7 +146,7 @@ def make_prediction(clicks, longitude, latitude, housing_median_age, total_rooms
         # standardization
         std_inputs = std_scaler.transform(inputs)
 
-        y = kneighbor_reg.predict(std_inputs)
+        y = ridge_reg.predict(std_inputs)
         formatted_y = "${:,.2f}".format(y[0])
         return formatted_y
 
